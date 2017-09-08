@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.zrafio.animation.CreateSubjectActivity"
+    tools:showIn="@layout/activity_create_subject"
+    android:background="#303030">
+
+    <ProgressBar
+        android:id="@+id/create_subject_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/create_subject_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+        <TextView
+            android:id="@+id/subject_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_new_subject"
+            android:layout_margin="16dp"
+            android:textSize="25sp"
+            android:textColor="#fc4949"
+            />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="15"
+                    >
+
+                    <TextView
+                        android:id="@+id/id_label_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="6"
+                        android:text="@string/id_number"
+                        android:textColor="#eee"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/id_number_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="9"
+                        android:textColor="#eee"
+                        android:hint="@string/numbers_only"
+                        android:textColorHint="#888"
+                        tools:ignore="TextFields" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="15"
+                    >
+
+                    <TextView
+                        android:id="@+id/first_name_label_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="6"
+                        android:text="@string/first_name"
+                        android:textColor="#eee"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/first_name_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="9"
+                        android:textColor="#eee"
+                        android:hint="@string/letters_only"
+                        android:textColorHint="#888"
+                        tools:ignore="TextFields" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="15"
+                    >
+
+                    <TextView
+                        android:id="@+id/last_name_label_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="6"
+                        android:text="@string/last_name"
+                        android:textColor="#eee"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/last_name_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="9"
+                        android:textColor="#eee"
+                        android:hint="@string/letters_only"
+                        android:textColorHint="#888"
+                        tools:ignore="TextFields" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="15"
+                    >
+
+                    <TextView
+                        android:id="@+id/gender_label_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="5.8"
+                        android:text="@string/gender"
+                        android:textColor="#eee"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/radio_grp_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.35"
+                        android:orientation="horizontal"
+                        android:weightSum="9">
+
+                        <RadioButton
+                            android:id="@+id/male_new"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="4"
+                            android:checked="true"
+                            android:onClick="onRadioButtonClicked"
+                            android:text="@string/male"
+                            android:textColor="#eee"
+                            android:textColorHighlight="@color/colorAccent" />
+
+                        <RadioButton
+                            android:id="@+id/female_new"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="5"
+                            android:onClick="onRadioButtonClicked"
+                            android:text="@string/female"
+                            android:textColor="#eee"
+                            android:textColorHighlight="@color/colorAccent" />
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="15">
+
+                    <TextView
+                        android:id="@+id/birthday_label_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="6.25"
+                        android:text="@string/birthday"
+                        android:textColor="#eee"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/date_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="4"
+                        android:text=""
+                        android:hint="Required!"
+                        android:textColorHint="#888"
+                        android:gravity="end"
+                        android:textColor="@color/colorAccent" />
+                    <Button
+                        android:id="@+id/pick_date_new"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:layout_margin="16dp"
+                        android:text="@string/pick_date"
+                        android:textColor="#fc4949"
+                        android:textSize="11sp"
+                        android:maxLines="1"
+
+                        tools:ignore="NestedWeights" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:layout_margin="25dp"
+                    android:weightSum="11">
+
+                    <Button
+                        android:id="@+id/create_new_subject"
+                        style="?android:textAppearanceSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:text="@string/create_subject"
+                        android:textColor="#fc4949"
+
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "16278356535",
+    "firebase_url": "https://animation-cf823.firebaseio.com",
+    "project_id": "animation-cf823",
+    "storage_bucket": "animation-cf823.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16278356535:android:9d782a12226ad18d",
+        "android_client_info": {
+          "package_name": "com.example.zrafio.animation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16278356535-2cb1tpajvhqc73aj808fcdmc69r7ivdj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs3Es_R2oV76R1Xoj038qXMD8sFLDyjYg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
