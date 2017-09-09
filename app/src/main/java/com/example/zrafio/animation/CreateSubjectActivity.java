@@ -4,6 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +18,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-public class CreateSubjectActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class CreateSubjectActivity extends AppCompatActivity {
 
     //UI references
     private EditText idNumber, firstName, lastName;
@@ -27,7 +29,6 @@ public class CreateSubjectActivity extends AppCompatActivity implements DatePick
     private View mCreateSubjectFormView;
 
     private String gender, birthday;
-    String selectedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +55,21 @@ public class CreateSubjectActivity extends AppCompatActivity implements DatePick
         pickDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerFragment datePickerFragment = new DatePickerFragment();
-                datePickerFragment.show(getFragmentManager(), "datePicker");
-                //dateLabel.setText("k,slk,kx");
+                DialogFragment datePickerFragment = new DialogFragment() {
+                    DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                            dateLabel.setText(i2 + "/" + (i1 + 1) + "/" + i);
+                        }
+                    };
 
+                    @Override
+                    public Dialog onCreateDialog(Bundle savedInstanceState) {
+                        return new DatePickerDialog(getActivity(), listener, 1970, 0, 1);
+                    }
+
+                };
+                datePickerFragment.show(getFragmentManager(), "datePicker");
             }
         });
 
@@ -156,7 +168,7 @@ public class CreateSubjectActivity extends AppCompatActivity implements DatePick
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
         // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
             mCreateSubjectFormView.setVisibility(show ? View.GONE : View.VISIBLE);
@@ -176,12 +188,6 @@ public class CreateSubjectActivity extends AppCompatActivity implements DatePick
                     mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
                 }
             });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mCreateSubjectFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
     }
 
     public boolean isPureString(String s){
@@ -202,10 +208,6 @@ public class CreateSubjectActivity extends AppCompatActivity implements DatePick
         }
     }
 
-    @Override
-    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-        selectedDate=i2+"/"+(i1+1)+"/"+i;
-        dateLabel.setText(selectedDate);
-
+    public void onRadioButtonClicked(View view) {
     }
 }
