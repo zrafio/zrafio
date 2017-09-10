@@ -18,6 +18,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 public class CreateSubjectActivity extends AppCompatActivity {
 
     //UI references
@@ -29,6 +31,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
     private View mCreateSubjectFormView;
 
     private String gender, birthday;
+    long idLong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,45 +109,61 @@ public class CreateSubjectActivity extends AppCompatActivity {
 
         //Check inputs validity
         if (TextUtils.isEmpty(birthday)) {
-            birthdayLabel.setError(getString(R.string.error_field_required));
+            birthdayLabel.setError("");
             focusView = birthdayLabel;
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(lName)){
-            lastNameLabel.setError(getString(R.string.error_field_required));
+        if (lName.isEmpty()){
+            lastNameLabel.setError("");
+            lastName.setText("");
+            lastName.setHint(getString(R.string.error_field_required));
             focusView = lastNameLabel;
             cancel = true;
         } else if (!isPureString(lName)){
-            lastNameLabel.setError("Invalid input value!");
+            lastNameLabel.setError("");
+            lastName.setText("");
+            lastName.setHint("Letters only!");
             focusView = lastNameLabel;
             cancel = true;
         }else if (lName.length()<3){
-            lastNameLabel.setError("Too short!");
+            lastNameLabel.setError("");
+            lastName.setText("");
+            lastName.setHint("Too short!");
             focusView = lastNameLabel;
             cancel = true;
         }
 
-        if (TextUtils.isEmpty(fName)){
-            firstNameLabel.setError(getString(R.string.error_field_required));
+        if (fName.isEmpty()){
+            firstNameLabel.setError("");
+            firstName.setText("");
+            firstName.setHint(getString(R.string.error_field_required));
             focusView = firstNameLabel;
             cancel = true;
         } else if (!isPureString(fName)){
-            firstNameLabel.setError("Invalid input value!");
+            firstNameLabel.setError("");
+            firstName.setText("");
+            firstName.setHint("Letters only!");
             focusView = firstNameLabel;
             cancel = true;
         }else if (fName.length()<3){
-            firstNameLabel.setError("Too short!");
+            firstNameLabel.setError("");
+            firstName.setText("");
+            firstName.setHint("Too short!");
             focusView = firstNameLabel;
             cancel = true;
         }
 
         if (TextUtils.isEmpty(id)){
-            idLabel.setError(getString(R.string.error_field_required));
+            idLabel.setError("");
+            idNumber.setText("");
+            idNumber.setHint(getString(R.string.error_field_required));
             focusView = idLabel;
             cancel = true;
         } else if (!isPureNumber(id)){
-            idLabel.setError(getString(R.string.error_field_required));
+            idLabel.setError("");
+            idNumber.setText("");
+            idNumber.setHint("Numbers only!");
             focusView = idLabel;
             cancel = true;
         }
@@ -157,6 +176,12 @@ public class CreateSubjectActivity extends AppCompatActivity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            SubjectBean subject = new SubjectBean(idLong, fName,lName,gender,birthday,day+"/"+month+"/"+year);
         }
     }
 
@@ -200,7 +225,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
 
     public boolean isPureNumber(String s){
         try{
-            Long.parseLong(s);
+            idLong=Long.parseLong(s);
             return true;
         }
         catch (NumberFormatException e){

@@ -26,7 +26,7 @@ public class FindSubjectActivity extends AppCompatActivity {
     private RadioButton male;
     private Button create, pickDate, pickRegistrationDate;
     private View mProgressView;
-    private View mCreateSubjectFormView;
+    private View mFindSubjectFormView;
 
     private String gender, birthday, registrationDate;
 
@@ -37,7 +37,7 @@ public class FindSubjectActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mCreateSubjectFormView = findViewById(R.id.find_subject_view);
+        mFindSubjectFormView = findViewById(R.id.find_subject_view);
         mProgressView = findViewById(R.id.find_subject_progress);
 
         idNumber = (EditText) findViewById(R.id.id_number_find);
@@ -129,18 +129,17 @@ public class FindSubjectActivity extends AppCompatActivity {
         View focusView = null;
 
         //Check inputs validity
-
         if (!lName.isEmpty() && !isPureString(lName)) {
             lastNameLabel.setError("");
-            lastName.refreshDrawableState();
+            lastName.setText("");
+            lastName.setHint("Letters only!");
             focusView = lastNameLabel;
             cancel = true;
         }
 
         if (!fName.isEmpty() && !isPureString(fName)) {
-            firstNameLabel.setError(getString(R.string.error_field_required));
+            firstNameLabel.setError("");
             firstName.setText("");
-            firstName.setHintTextColor(0xeee);
             firstName.setHint("Letters only!");
             focusView = firstNameLabel;
             cancel = true;
@@ -149,8 +148,7 @@ public class FindSubjectActivity extends AppCompatActivity {
         if (!id.isEmpty() && !isPureNumber(id)) {
             idLabel.setError(getString(R.string.error_field_required));
             idNumber.setText("");
-            idNumber.setHintTextColor(0xeee);
-            idNumber.setHint("numbers only!");
+            idNumber.setHint("Numbers only!");
             focusView = idLabel;
             cancel = true;
         }
@@ -176,12 +174,12 @@ public class FindSubjectActivity extends AppCompatActivity {
         // the progress spinner.
         int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-        mCreateSubjectFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        mCreateSubjectFormView.animate().setDuration(shortAnimTime).alpha(
+        mFindSubjectFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+        mFindSubjectFormView.animate().setDuration(shortAnimTime).alpha(
                 show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                mCreateSubjectFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                mFindSubjectFormView.setVisibility(show ? View.GONE : View.VISIBLE);
             }
         });
 

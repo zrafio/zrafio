@@ -1,35 +1,29 @@
 package com.example.zrafio.animation;
 
-import java.util.Date;
-
 /**
  * Created by zrafio on 9/4/17.
  */
 
 public class SubjectBean {
 
-    private int id;
-    private String firstName;
-    private String lastName;
-    private Date birthday;
-    private String gender;
-    private Date registrationDate;
+    private long id;
+    private String firstName,lastName,gender,birthday,registrationString;
 
-    public SubjectBean(int id, String firstName, String lastName,
-                       Date birthday, String gender, Date registrationDate) {
+    public SubjectBean(long id, String firstName, String lastName,String gender,
+                       String birthday,  String registrationString) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
         this.gender = gender;
-        this.registrationDate = registrationDate;
+        this.registrationString = registrationString;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -49,11 +43,11 @@ public class SubjectBean {
         this.lastName = lastName;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -65,11 +59,11 @@ public class SubjectBean {
         this.gender = gender;
     }
 
-    public Date getRegistrationDate() {
-        return registrationDate;
+    public String getRegistrationString() {
+        return registrationString;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
-        this.registrationDate = registrationDate;
+    public void setRegistrationString(String registrationString) {
+        this.registrationString = registrationString;
     }
 }
