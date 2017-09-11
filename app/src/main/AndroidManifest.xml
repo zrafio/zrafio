@@ -9,19 +9,16 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape"
-            >
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,14 +38,14 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CreateSubjectActivity"
             android:label="@string/title_activity_create_subject"
             android:parentActivityName=".SettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.zrafio.animation.SettingsActivity" />
@@ -57,11 +54,18 @@
             android:name=".FindSubjectActivity"
             android:label="@string/title_activity_find_subject"
             android:parentActivityName=".SettingsActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.zrafio.animation.SettingsActivity" />
+        </activity>
+        <activity android:name=".BouncingBallActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
