@@ -175,14 +175,16 @@ public class LoginActivity extends AppCompatActivity  {
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
                                 Log.w(TAG, "signInWithEmail:failed", task.getException());
-                                Toast.makeText(LoginActivity.this, "Authentication failed !",
+                                Toast.makeText(getApplicationContext(), "Authentication failed !",
                                         Toast.LENGTH_SHORT).show();
                                 //setContentView(R.layout.activity_login);
                                 Intent login_failed = new Intent(LoginActivity.this,LoginActivity.class);
                                 startActivity(login_failed);
                             }
                             else{
-                                Intent settings = new Intent(LoginActivity.this,SettingsActivity.class);
+                                Toast.makeText(getApplicationContext(), "Authentication successful !",
+                                        Toast.LENGTH_SHORT).show();
+                                Intent settings = new Intent(getApplicationContext(),SettingsActivity.class);
                                 startActivity(settings);
                                 finish();
                             }

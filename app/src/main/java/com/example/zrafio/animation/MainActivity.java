@@ -17,14 +17,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // FIXME: 9/8/17
-                //Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-                Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                //Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
                 startActivity(intent);
                 finish();
             }
         };
         // FIXME: 9/8/17
-        //handler.postDelayed(run,3000);
-        handler.postDelayed(run,3);
+        handler.postDelayed(run,3000);
+        //handler.postDelayed(run,3);
     }
 }

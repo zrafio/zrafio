@@ -6,64 +6,68 @@ package com.example.zrafio.animation;
 
 public class SubjectBean {
 
-    private long id;
-    private String firstName,lastName,gender,birthday,registrationString;
+    private long aid;
+    private String bfirstName,clastName,dgender,ebirthday,registrationDate;
 
-    public SubjectBean(long id, String firstName, String lastName,String gender,
-                       String birthday,  String registrationString) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.registrationString = registrationString;
+    public SubjectBean(){
+        super();
+    }
+
+    public SubjectBean(long aid, String bfirstName, String clastName,String dgender,
+                       String ebirthday,  String registrationDate) {
+        this.aid = aid;
+        this.bfirstName = bfirstName;
+        this.clastName = clastName;
+        this.ebirthday = ebirthday;
+        this.dgender = dgender;
+        this.registrationDate = registrationDate;
     }
 
     public long getId() {
-        return id;
+        return aid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long aid) {
+        this.aid = aid;
     }
 
     public String getFirstName() {
-        return firstName;
+        return bfirstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String bfirstName) {
+        this.bfirstName = bfirstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return clastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setLastName(String clastName) {
+        this.clastName = clastName;
     }
 
     public String getGender() {
-        return gender;
+        return dgender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender(String dgender) {
+        this.dgender = dgender;
     }
 
-    public String getRegistrationString() {
-        return registrationString;
+    public String getBirthday() {
+        return ebirthday;
     }
 
-    public void setRegistrationString(String registrationString) {
-        this.registrationString = registrationString;
+    public void setBirthday(String ebirthday) {
+        this.ebirthday = ebirthday;
+    }
+
+    public String getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
     }
 }

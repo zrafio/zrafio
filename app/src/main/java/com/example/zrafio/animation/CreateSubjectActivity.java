@@ -18,6 +18,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Calendar;
 
 public class CreateSubjectActivity extends AppCompatActivity {
@@ -179,9 +182,15 @@ public class CreateSubjectActivity extends AppCompatActivity {
 
             final Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
+            int month = c.get(Calendar.MONTH)+1;
             int day = c.get(Calendar.DAY_OF_MONTH);
-            SubjectBean subject = new SubjectBean(idLong, fName,lName,gender,birthday,day+"/"+month+"/"+year);
+            SubjectBean subject = new SubjectBean(idLong, fName,lName,gender,birthday,
+                    day+"/"+month+"/"+year);
+            // Write a message to the database
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference();
+
+            myRef.child("subjects").push().setValue(subject);
         }
     }
 

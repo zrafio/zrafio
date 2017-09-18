@@ -6,6 +6,7 @@ import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +18,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class FindSubjectActivity extends AppCompatActivity {
 
+    private static final String TAG = "";
     //UI references
     private EditText idNumber, firstName, lastName;
     private TextView idLabel, firstNameLabel, lastNameLabel, genderLabel, birthdayLabel,
@@ -29,6 +34,7 @@ public class FindSubjectActivity extends AppCompatActivity {
     private View mFindSubjectFormView;
 
     private String gender, birthday, registrationDate;
+    static SubjectsList subjectsList = new SubjectsList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +167,15 @@ public class FindSubjectActivity extends AppCompatActivity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+            //TODO: retrieve subjects matching chosen values
+            // Read from the database
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("subjects");
+            myRef.addValueEventListener(subjectsList);
+            Intent showList = new Intent(FindSubjectActivity.this,SubjectsListActivity.class);
+            //showList.putParcelableArrayListExtra("subjects", (ArrayList<? extends Parcelable>) subjectsList.subjects);
+            startActivity(showList);
+
         }
     }
 
@@ -212,4 +227,5 @@ public class FindSubjectActivity extends AppCompatActivity {
 
     public void onRadioButtonClicked(View view) {
     }
+
 }

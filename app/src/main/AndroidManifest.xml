@@ -60,7 +60,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.zrafio.animation.SettingsActivity" />
         </activity>
-        <activity android:name=".BouncingBallActivity">
+        <activity
+            android:name=".BouncingBallActivity"
+            android:screenOrientation="landscape"
+            >
+        </activity>
+        <activity
+            android:name=".SubjectsListActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
